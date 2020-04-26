@@ -1,5 +1,3 @@
-package idontcare;
-
 import java.util.Random;
 
 public class TypedText {

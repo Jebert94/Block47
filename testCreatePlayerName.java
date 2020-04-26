@@ -1,5 +1,3 @@
-package idontcare;
-
 public class testCreatePlayerName {
     public static void main(String[] args) throws InterruptedException {
         System.out.print("\033[H\033[2J\n");

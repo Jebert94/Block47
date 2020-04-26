@@ -38,7 +38,7 @@ public class TypedText {
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
             try {
-                Thread.sleep(100); 
+                Thread.sleep(75); 
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -47,7 +47,7 @@ public class TypedText {
         System.out.println();
     }
     public static void typedNormal(String line) throws InterruptedException {
-        typedNormal(line, defaultWaitTime2);
+        typedNormal(line, defaultWaitTime1);
     }
 
 
@@ -59,7 +59,7 @@ public class TypedText {
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
             try {
-                Thread.sleep(200); 
+                Thread.sleep(150); 
             } catch (Exception e) {
                 e.printStackTrace();
             }

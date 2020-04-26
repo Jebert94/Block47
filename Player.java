@@ -10,9 +10,6 @@ public class Player {
     private static Player onlyPlayer;
 
     private Player(){
-        this.attack = 1;
-        this.agility = 1;
-        this.health = 5;
     }
 
     public static Player getInstance() {

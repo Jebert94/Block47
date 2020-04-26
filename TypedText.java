@@ -1,10 +1,10 @@
+package idontcare;
+
 import java.util.Random;
-
-
 
 public class TypedText {
 
-    public static void typedFast(String line){
+    public static void typedFast(String line) {
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
             try {
@@ -15,7 +15,7 @@ public class TypedText {
         }
     }
 
-    public static void typedNormal(String line){
+    public static void typedNormal(String line) {
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
             try {
@@ -26,7 +26,7 @@ public class TypedText {
         }
     }
 
-    public static void typedSlow(String line){
+    public static void typedSlow(String line) {
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
             try {
@@ -37,8 +37,8 @@ public class TypedText {
         }
     }
 
-    public static void typedRandom(String line){
-        Random rand = new Random();
+    public static void typedRandom(String line) {
+        Random rand = new Random(); 
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
             int time = rand.nextInt(200);
@@ -50,7 +50,7 @@ public class TypedText {
         }
     }
 
-    public static void typedSarcasticly(String line){
+    public static void typedSarcasticly(String line) {
         for(int i =0; i<line.length();i++){
             if(i % 2 == 0){
                 char evenLetter = line.charAt(i);
@@ -71,4 +71,3 @@ public class TypedText {
         }
     }
 }
-

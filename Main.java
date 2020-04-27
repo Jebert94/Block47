@@ -1,11 +1,14 @@
-public class Main {
+public class Main
+{
+
     public static void main(String[] args) throws InterruptedException {
-        System.out.print("\033[H\033[2J"+"\n");
-        Intro intro = new Intro();  
-        Intro.introduction();
+        System.out.print("\033[H\033[2J");
+        Intro intro = new Intro();
+        intro.description();
         Player player = Player.getInstance();
         intro.createPlayerName(player);
-        Intro.background();
         intro.createPlayerStats(player);
     }
+
+
 }

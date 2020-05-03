@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends AbstractCharacter{
     private String name;
     private int attack;
     private int agility;
@@ -20,30 +20,6 @@ public class Player {
             onlyPlayer = new Player();
         }
         return onlyPlayer;
-    }
-
-    //**************** */ getters and setters **************************
-    public int getAttack(){
-        return onlyPlayer.attack;
-    }
-    public void setAttack(int attackpoints){
-        onlyPlayer.attack = attackpoints;
-    }
-
-
-    public int getAgility(){
-        return onlyPlayer.agility;
-    }
-    public void setAgility(int agilitypoints){
-        onlyPlayer.agility = agilitypoints;
-    }
-
-
-    public int getHealth(){
-        return onlyPlayer.health;
-    }
-    public void setHealth(int healthpoints){
-        onlyPlayer.health = healthpoints;
     }
 
 

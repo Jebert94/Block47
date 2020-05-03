@@ -1,8 +1,10 @@
 
-public abstract class AbstractEnemy{
+public class Enemy extends AbstractCharacter{
+
     private int attack;
     private int health;
-    private boolean isAlive;
+	private boolean isAlive;
+	
 /****************getters and setters*****************/
 	public int getAttack(){
 		return attack;
@@ -30,10 +32,10 @@ public abstract class AbstractEnemy{
 
 /*************Constructor *********************************/
 
-	public AbstractEnemy(int attack, int health, Boolean isDead){
+	public Enemy(int attack, int health, Boolean isAlive){
 	    this.attack = attack;
 	    this.health = health;
-	    this.isAlive = isDead;
+	    this.isAlive = isAlive;
 	} 
 	
 }

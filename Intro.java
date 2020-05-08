@@ -100,23 +100,23 @@ public class Intro {
         
         TypedText.typedFast("How many hours do you want to spend bandaging yourself up? This will increase your Health. You have: "+statsAvalible+" hours remaining.");
         int addedHealth = Main.input.nextInt();
-        int baseHealth = 7;
-        onlyPlayer.setHealth(baseHealth + addedHealth);
+        int startingHealth = 7;
+        onlyPlayer.setBaseHealth(startingHealth + addedHealth);
         statsAvalible = statsAvalible - addedHealth;
         TimeUnit.SECONDS.sleep(1);
 
         TypedText.typedFast("How many hours do you want to spend building a weapon? This will increase your Attack. You have: "+statsAvalible+" hours remaining.");
         int addedAttack = Main.input.nextInt();
-        int baseAttack = 1;
-        onlyPlayer.setAttack(baseAttack + addedAttack);
+        int startingAttack = 1;
+        onlyPlayer.setBaseAttack(startingAttack + addedAttack);
         statsAvalible = statsAvalible - addedAttack;
         TimeUnit.SECONDS.sleep(1);
 
         TypedText.typedFast("How many hours do you want to spend fixing the broken shoes? This will increase your Agility. You have: "+statsAvalible+" hours remaining.");
         int addedAgility = Main.input.nextInt();
         Main.input.nextLine();
-        int baseAggility = 1;
-        onlyPlayer.setAgility(baseAggility + addedAgility);
+        int startingAggility = 1;
+        onlyPlayer.setBaseAgility(startingAggility + addedAgility);
         statsAvalible = statsAvalible - addedAgility;
         System.out.println("\n");
         TimeUnit.SECONDS.sleep(1);

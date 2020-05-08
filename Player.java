@@ -6,7 +6,10 @@ public class Player extends AbstractCharacter{
     /**********************Instance Variables**************************/
     private String name;
     private boolean fighting;
-    ArrayList<Iitems> inventory = new ArrayList<Iitems>();
+    private int baseHealth;
+    private int baseAttack;
+    private int baseAgility;
+    ArrayList<Item> inventory = new ArrayList<Item>(3);
 
     /****************** Singleton Design Pattern**********************/
     private static Player onlyPlayer;
@@ -22,6 +25,63 @@ public class Player extends AbstractCharacter{
     }
 
     //*****************/ Getters and Setters **************************
+    public int getBaseAttack(){
+        return this.baseAttack;
+    }
+    public void setBaseAttack(int attackpoints){
+        this.baseAttack = attackpoints;
+    }
+
+    public int getBaseAgility(){
+        return this.baseAgility;
+    }
+    public void setBaseAgility(int agilitypoints){
+        this.baseAgility = agilitypoints;
+    }
+
+    public int getBaseHealth(){
+        return this.baseHealth;
+    }
+    public void setBaseHealth(int healthpoints){
+        this.baseHealth = healthpoints;
+    }
+
+
+    public int getAttack(){
+        Item attackItem = onlyPlayer.inventory.get(0);
+        if(attackItem == null){
+            return this.baseAttack;
+        }
+        else{
+            int buffOrNerf = attackItem.getBuffOrNerf();
+            return this.baseAttack + buffOrNerf;
+        }
+    }
+
+
+    public int getAgility(){
+        Item agilityItem = onlyPlayer.inventory.get(1);
+        if(agilityItem == null){
+            return this.baseAgility;
+        }
+        else{
+            int buffOrNerf = agilityItem.getBuffOrNerf();
+            return this.baseAgility + buffOrNerf;
+        }
+    }
+
+
+    public int getHealth(){
+        Item armorItem = onlyPlayer.inventory.get(2);
+        if(armorItem == null){
+            return this.baseHealth;
+        }
+        else{
+            int buffOrNerf = armorItem.getBuffOrNerf();
+            return this.baseHealth + buffOrNerf;
+        }
+    }
+
 
     public String getName() {
         return onlyPlayer.name;
@@ -126,4 +186,11 @@ public class Player extends AbstractCharacter{
         setFightingStatus(false);
     }
 
+    /***********************Adding Items to Inventory************************* */
+    public void addItemToInventory(Item item){
+
+        int arrayLocation = item.getCategory();
+        onlyPlayer.inventory.add(arrayLocation, item);
+        
+    }
 }

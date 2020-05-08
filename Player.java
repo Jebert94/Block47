@@ -9,12 +9,17 @@ public class Player extends AbstractCharacter{
     private int baseHealth;
     private int baseAttack;
     private int baseAgility;
+
     ArrayList<Item> inventory = new ArrayList<Item>(3);
+    
 
     /****************** Singleton Design Pattern**********************/
     private static Player onlyPlayer;
 
     private Player(){
+        inventory.add(new Item("empty", 0, 0));
+        inventory.add(new Item("empty", 1, 0));
+        inventory.add(new Item("empty", 2, 0));
     }
 
     public static Player getInstance() {
@@ -49,37 +54,28 @@ public class Player extends AbstractCharacter{
 
     public int getAttack(){
         Item attackItem = onlyPlayer.inventory.get(0);
-        if(attackItem == null){
-            return this.baseAttack;
-        }
-        else{
-            int buffOrNerf = attackItem.getBuffOrNerf();
-            return this.baseAttack + buffOrNerf;
-        }
+        int buffOrNerf = attackItem.getBuffOrNerf();
+        int totalAttack = this.baseAttack +buffOrNerf;
+        return totalAttack;
+        
     }
 
 
     public int getAgility(){
         Item agilityItem = onlyPlayer.inventory.get(1);
-        if(agilityItem == null){
-            return this.baseAgility;
-        }
-        else{
-            int buffOrNerf = agilityItem.getBuffOrNerf();
-            return this.baseAgility + buffOrNerf;
-        }
+        int buffOrNerf = agilityItem.getBuffOrNerf();
+        int totalAgility = this.baseAgility + buffOrNerf;
+        return totalAgility;
+        
     }
 
 
     public int getHealth(){
         Item armorItem = onlyPlayer.inventory.get(2);
-        if(armorItem == null){
-            return this.baseHealth;
-        }
-        else{
-            int buffOrNerf = armorItem.getBuffOrNerf();
-            return this.baseHealth + buffOrNerf;
-        }
+        int buffOrNerf = armorItem.getBuffOrNerf();
+        int totalHealth = this.baseHealth + buffOrNerf;
+        return totalHealth;
+        
     }
 
 
@@ -107,23 +103,31 @@ public class Player extends AbstractCharacter{
         TypedText.typedNormal("what are you going to do??");
         TypedText.typedFast("Enter one of the following options:");
         System.out.println();
-        TypedText.typedFast("Attack");
-        TypedText.typedFast("Heal");
-        TypedText.typedFast("Run",2);
+        TypedText.typedFast("1: Attack");
+        TypedText.typedFast("2: Heal");
+        TypedText.typedFast("3: Run",2);
 
     }
 
     public void playerChoiceAnswer(Player player, Enemy enemy) throws InterruptedException {
-        String choice = Main.input.nextLine();
-        String normalizedChoice = choice.toLowerCase();
-        if(normalizedChoice.equals("attack")){
+        int choice = Main.input.nextInt();
+        switch(choice){
+        case 1:
             attack(player, enemy);
-        }
-        if (normalizedChoice.equals("heal")) {
+            break;
+        
+        case 2:
             heal(player, enemy);
-        }
-        if(normalizedChoice.equals("run")){
+            break;
+        
+        case 3:
             run(player, enemy);
+            break;
+        
+        default:
+            TypedText.typedFast("Try again. Choose either attack, heal, or run.\n");
+            playerChoiceAnswer(player, enemy);
+        break;
         }
 
     }

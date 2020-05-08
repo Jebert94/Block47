@@ -5,10 +5,12 @@ public class Enemy extends AbstractCharacter {
    
 /*************Constructor *********************************/
 
-public Enemy(int attack, int health, int agility){
+public Enemy(String name, int attack, int health, int agility){
+    setName(name);
 	setAttack(attack);
     setHealth(health);
     setAgility(agility);
+    
     } 
     
 /**********************Other Methods***********************************/

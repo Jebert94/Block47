@@ -4,6 +4,7 @@ public abstract class AbstractCharacter {
     private int agility;
     private int attack;
     private int health;
+    private String name;
 
     /*getters and setters*/
     public int getAttack(){
@@ -27,6 +28,12 @@ public abstract class AbstractCharacter {
         this.health = healthpoints;
     }
 
+    public String getName(){
+        return this.name;
+    }
+    public void setName(String characterName){
+        this.name = characterName;
+    }
     /* methods*/
     public void turn(Player player, Enemy enemy)throws InterruptedException{
         

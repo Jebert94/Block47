@@ -75,12 +75,12 @@ public class Intro {
 
         TypedText.typedFast("* Out of breath you whisper “what the fuck was that thing?” as you stare at the shaking door. *");
         TypedText.typedFast("* On the counter next to it you notice a bottle of vodka, grab it and start downing it. *"); 
-        TypedText.typedFast("* Walking around the room and notice you're barefoot but there are some busted up shoes in the corner. *");
+        TypedText.typedFast("* Walking around the room and notice you're barefoot. *");
         TypedText.typedFast("* You're also bleeding, that thing must have got you somehow. *");
         TypedText.typedFast("* You head over to the window and look down through the broken glass. *");
         System.out.println("\n");
 
-        TypedText.typedFast("\"I'm at least 5 stories up. There's no way I can get out this way.\"");
+        TypedText.typedFast("\"I'm at least 3 stories up. There's no way I can get out this way.\"");
         TypedText.typedFast("\"That door is my only option and I'd say I have at least 5 hours until sunrise.\"");
         System.out.println("\n\n\n");
 
@@ -91,6 +91,7 @@ public class Intro {
         TypedText.typedFast("Health determines how much damage you can take.");
         TypedText.typedFast("Attack is your ability to fight off the monsters."); 
         TypedText.typedFast("Agility determines how likely you are to get away if you decided to run from one.");
+        TypedText.typedFast("As you attempt to leave this hell hole, items can be found to either boost or hinder these stats\n");
 
     }
 
@@ -105,14 +106,14 @@ public class Intro {
         statsAvalible = statsAvalible - addedHealth;
         TimeUnit.SECONDS.sleep(1);
 
-        TypedText.typedFast("How many hours do you want to spend building a weapon? This will increase your Attack. You have: "+statsAvalible+" hours remaining.");
+        TypedText.typedFast("How many hours do you want to spend watching Never Back Down? This will increase your Attack. You have: "+statsAvalible+" hours remaining.");
         int addedAttack = Main.input.nextInt();
         int startingAttack = 1;
         onlyPlayer.setBaseAttack(startingAttack + addedAttack);
         statsAvalible = statsAvalible - addedAttack;
         TimeUnit.SECONDS.sleep(1);
 
-        TypedText.typedFast("How many hours do you want to spend fixing the broken shoes? This will increase your Agility. You have: "+statsAvalible+" hours remaining.");
+        TypedText.typedFast("How many hours do you want to spend running in place? This will increase your Agility. You have: "+statsAvalible+" hours remaining.");
         int addedAgility = Main.input.nextInt();
         Main.input.nextLine();
         int startingAggility = 1;
@@ -134,21 +135,23 @@ public class Intro {
 
     private void askIfCorrect(Player onlyPlayer) throws InterruptedException {
         System.out.println("These are your players stats.");
-        System.out.println("\nName: "+onlyPlayer.getName()+"\nHealth: "+onlyPlayer.getHealth()+"\nAttack: "+onlyPlayer.getAttack()+"\nAgility: "+onlyPlayer.getAgility());
+        System.out.println("\nName: "+onlyPlayer.getName()+"\nHealth: "+onlyPlayer.getBaseHealth()+"\nAttack: "+onlyPlayer.getBaseAttack()+"\nAgility: "+onlyPlayer.getBaseAgility());
         TimeUnit.SECONDS.sleep(4);
-        System.out.println("\nIs this correct? \nEnter 'Yes' or 'No'");
-        String correct = Main.input.nextLine();
-        
-        if(correct.equalsIgnoreCase("no")) {
-            createPlayerStats(onlyPlayer);
-        }
-        
-        if(correct.equalsIgnoreCase("yes")) {
+        System.out.println("\nIs this correct? \n1: Yes\n2: No\n");
+        int correct = Main.input.nextInt();
+        switch(correct){
+
+        case 1:
             System.out.println("\n");
-        }
-        
-        else {
+            break;
+
+        case 2:
+            createPlayerStats(onlyPlayer);
+            break;
+
+        default:
             askIfCorrect(onlyPlayer);
+        break;
         }
     }
 }

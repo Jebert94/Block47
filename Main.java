@@ -11,10 +11,10 @@ public class Main {
         intro.createPlayerName(player);
         //Intro.background();
         intro.createPlayerStats(player);
-        Enemy lvl1Enemy = new Enemy(2, 5, 1);
+        Enemy lvl1Enemy = new Enemy("lvl1",2, 5, 1);
         Battle firstFight = new Battle(player, lvl1Enemy);
         firstFight.fight();
-        Enemy lvl2Enemy = new Enemy(1, 3, 3);
+        Enemy lvl2Enemy = new Enemy("lvl2",1, 3, 3);
         Battle secondFight = new Battle(player,lvl2Enemy);
         secondFight.fight();
         input.close();

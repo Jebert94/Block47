@@ -10,7 +10,6 @@ public Enemy(String name, int attack, int health, int agility){
 	setAttack(attack);
     setHealth(health);
     setAgility(agility);
-    
     } 
     
 /**********************Other Methods***********************************/
@@ -27,15 +26,15 @@ public void turn(Player player, Enemy enemy) throws InterruptedException{
 
 
     int attackPoints = enemy.getAttack();
-    int oppHealthPoints = player.getHealth();
+    int oppHealthPoints = player.getFightingHealth();
     int updatedHealth = oppHealthPoints - attackPoints;
     TypedText.typedFast(kindOfAttacks.get(attackLine));
     TypedText.typedFast("You took "+ attackPoints+ " damage.");
     System.out.println("\n");
     
 
-    player.setHealth(updatedHealth);
-    if(player.getHealth()<=0){
+    player.setUpdatedFightingHealth(updatedHealth);
+    if(player.getFightingHealth()<=0){
         Battle.gameOver();
             
         }

@@ -49,6 +49,7 @@ public class Battle {
         AbstractCharacter firstAttacker = fasterAgility();
         AbstractCharacter secondAttacker;
         System.out.println();
+        player.setStartingFightingHealth();
         getStats();
         System.out.println();
         TimeUnit.SECONDS.sleep(3);
@@ -74,7 +75,7 @@ public class Battle {
 
     public void getStats() throws InterruptedException
     /*
-    * This method will print out the current stats of both the player and enemy
+    *This method will print out the current stats of both the player and enemy
     *
     */
     {
@@ -84,7 +85,7 @@ public class Battle {
 
         int playerAttack = player.getAttack();
         int playerAgility = player.getAgility();
-        int playerHealth = player.getHealth();
+        int playerHealth = player.getFightingHealth();
 
         System.out.println("Player Stats: Health-"+ playerHealth + " Attack-"+playerAttack+" Agility-"+playerAgility );
         System.out.println("Enemy Stats: Health-"+ enemyHealth + " Attack-"+enemyAttack+" Agility-"+enemyAgility );
@@ -106,7 +107,8 @@ public class Battle {
     /*
     * This method will run the exit senerio when the player dies
     *
-    */{
+    */
+    {
         TypedText.typedSlow("You Lose");
         System.exit(0);
 

@@ -9,6 +9,8 @@ public class Player extends AbstractCharacter{
     private int baseHealth;
     private int baseAttack;
     private int baseAgility;
+    private int fightingHealth; //this allows the player to 'heal' after every battle automattically and correcly change their health during a battle"
+
 
     ArrayList<Item> inventory = new ArrayList<Item>(3);
     
@@ -29,7 +31,10 @@ public class Player extends AbstractCharacter{
         return onlyPlayer;
     }
 
-    //*****************/ Getters and Setters **************************
+    //*****************/ Getters and Setters **************************/
+
+
+    /********Base stats********* */
     public int getBaseAttack(){
         return this.baseAttack;
     }
@@ -50,7 +55,35 @@ public class Player extends AbstractCharacter{
     public void setBaseHealth(int healthpoints){
         this.baseHealth = healthpoints;
     }
+    public String getName() {
+        return onlyPlayer.name;
+    }
+    public void setName(String assignedName){
+        onlyPlayer.name = assignedName;
+    }
 
+    /**********Acessories ************** */
+
+    public int getWeaponPoints(){
+        Item weapon = onlyPlayer.inventory.get(0);
+        int weaponAttackPoints = weapon.getBuffOrNerf();
+        return weaponAttackPoints;
+    }
+
+    public int getArmorPoints(){
+        Item armorItem = onlyPlayer.inventory.get(2);
+        int armorDefensePoints = armorItem.getBuffOrNerf();
+        return armorDefensePoints;
+    }
+
+    public int getAgilityAcessoryPoints(){
+        Item agilityItem = onlyPlayer.inventory.get(1);
+        int agilityAccessory = agilityItem.getBuffOrNerf();
+        return agilityAccessory;
+    }
+
+
+    /********Combined Stats****************/
 
     public int getAttack(){
         Item attackItem = onlyPlayer.inventory.get(0);
@@ -60,7 +93,6 @@ public class Player extends AbstractCharacter{
         
     }
 
-
     public int getAgility(){
         Item agilityItem = onlyPlayer.inventory.get(1);
         int buffOrNerf = agilityItem.getBuffOrNerf();
@@ -68,7 +100,6 @@ public class Player extends AbstractCharacter{
         return totalAgility;
         
     }
-
 
     public int getHealth(){
         Item armorItem = onlyPlayer.inventory.get(2);
@@ -79,11 +110,17 @@ public class Player extends AbstractCharacter{
     }
 
 
-    public String getName() {
-        return onlyPlayer.name;
+    /************Fighting Stats************** */
+    public void setStartingFightingHealth(){
+        this.fightingHealth = getHealth();
     }
-    public void setName(String assignedName){
-        onlyPlayer.name = assignedName;
+
+    public void setUpdatedFightingHealth(int healthPoints){
+        this.fightingHealth = healthPoints;
+    }
+
+    public int getFightingHealth(){
+        return fightingHealth;
     }
 
     public boolean getFightingStatus(){

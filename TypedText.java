@@ -15,8 +15,15 @@ public class TypedText {
     public static void typedFast(String line, int waitTime) throws InterruptedException {
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
+            int time = 10;
+            if(line.charAt(i) == ' '){
+                time = 25;
+            }
+            if(line.charAt(i) == '.'){
+                time = 50;
+            }
             try {
-                Thread.sleep(50); 
+                Thread.sleep(time); 
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -31,14 +38,39 @@ public class TypedText {
     }
 
 
-
-
-
-    public static void typedNormal(String line, int waitTime) throws InterruptedException {
+    public static void typedNormalSound(String line) throws InterruptedException {
+        Random rand = new Random();
+        Sound sound = new Sound();
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
+            sound.typingSound();
+            int time = rand.nextInt(60-40+1)+40;
+            if(line.charAt(i) == ' '){
+                time = 60;
+            }
             try {
-                Thread.sleep(75); 
+                Thread.sleep(time);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println();
+    }
+
+    public static void typedNormal(String line, int waitTime) throws InterruptedException {
+        Random rand = new Random();
+        for(int i =0; i<line.length();i++){
+            System.out.print(line.charAt(i));
+            int time = rand.nextInt(60-40+1)+40;
+            if(line.charAt(i) == ' '){
+                time = 80;
+            }
+            if(line.charAt(i) == '.'){
+                time = 200;
+            }
+            try {
+                Thread.sleep(time);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -58,8 +90,15 @@ public class TypedText {
     public static void typedSlow(String line, int waitTime) throws InterruptedException {
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
+            int time = 40;
+            if(line.charAt(i) == ' '){
+                time = 60;
+            }
+            if(line.charAt(i) == '.'){
+                time = 75;
+            }
             try {
-                Thread.sleep(150); 
+                Thread.sleep(time);
             } catch (Exception e) {
                 e.printStackTrace();
             }

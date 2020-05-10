@@ -6,9 +6,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class Sound {
-    private ArrayList<String> typingFiles = new ArrayList<String>();
-
-    public  Sound(){
+    private static ArrayList<String> typingFiles = new ArrayList<String>();
+    static{
         typingFiles.add("/SoundEffects/Old01.wav");
         typingFiles.add("/SoundEffects/Old02.wav");
         typingFiles.add("/SoundEffects/Old03.wav");
@@ -16,20 +15,27 @@ public class Sound {
         typingFiles.add("/SoundEffects/Old05.wav");
         typingFiles.add("/SoundEffects/Old05.wav");
     }
+    private Clip clip;
 
-    public void sound(String file) {
+    public Sound(String file) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource(file));
-            Clip clip = AudioSystem.getClip();
+            this.clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+    
+
+    public Clip getClip(){
+        return clip;
+    }
 
 
-    public void typingSound() {
+
+    public Sound() {
         Random rand = new Random();
         try {
             String file = typingFiles.get(rand.nextInt(typingFiles.size()));

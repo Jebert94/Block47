@@ -1,5 +1,7 @@
 import java.util.concurrent.TimeUnit;
 
+import javax.sound.sampled.Clip;
+
 public class Battle {
     
     private Player player;
@@ -45,13 +47,12 @@ public class Battle {
     *
     */
     {
-        System.out.println("You Ran Into an Enemy!");
+        Sound sound = new Sound("\\SoundEffects\\Pokemon.wav");
+        Clip clip = sound.getClip();
+        System.out.println("You Ran Into an Enemy!\n");
         AbstractCharacter firstAttacker = fasterAgility();
         AbstractCharacter secondAttacker;
-        System.out.println();
         player.setStartingFightingHealth();
-        getStats();
-        System.out.println();
         TimeUnit.SECONDS.sleep(3);
 
         if(firstAttacker.equals(player) ){
@@ -63,14 +64,18 @@ public class Battle {
             secondAttacker = player;
         }
         while(enemy.getHealth()>0 & player.getHealth()>0 & player.getFightingStatus() ){
-            firstAttacker.turn(player, enemy);
+            Main.clearScreen();
             getStats();
+            firstAttacker.turn(player, enemy);
             if(!player.getFightingStatus() ){
                 break;
             }
-            secondAttacker.turn(player,enemy);
+            Main.clearScreen();
             getStats();
+            secondAttacker.turn(player,enemy);
+            
         }
+        clip.stop();
     }
 
     public void getStats() throws InterruptedException
@@ -79,6 +84,7 @@ public class Battle {
     *
     */
     {
+        Main.clearScreen();
         int enemyAttack = enemy.getAttack();
         int enemyAgility = enemy.getAgility();
         int enemyHealth = enemy.getHealth();
@@ -87,9 +93,26 @@ public class Battle {
         int playerAgility = player.getAgility();
         int playerHealth = player.getFightingHealth();
 
-        System.out.println("Player Stats: Health-"+ playerHealth + " Attack-"+playerAttack+" Agility-"+playerAgility );
-        System.out.println("Enemy Stats: Health-"+ enemyHealth + " Attack-"+enemyAttack+" Agility-"+enemyAgility );
-        System.out.println("\n");
+
+        System.out.println("+-------------------------------+    +-------------------------------+");
+        System.out.println("|             ENEMY             |    |             PLAYER            |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("| Current Health: "+enemyHealth+"             |    | Current Health: "+playerHealth+"             |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("| Attack: "+enemyAttack+"                     |    | Attack: "+playerAttack+"                     |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("| Agility: "+enemyAgility+"                    |    | Agility: "+playerAgility+"                    |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("|                               |    | Inventory:                    |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("|                               |    |    Armor["+player.inventory.get(0).getName()+"] +"+player.getArmorPoints()+" Health     |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("|                               |    |    Weapon["+player.inventory.get(1).getName()+"] +"+player.getWeaponPoints()+" Attack    |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("|                               |    |    Boost["+player.inventory.get(2).getName()+"] +"+player.getAgilityAcessoryPoints()+" Agility    |");
+        System.out.println("|                               |    |                               |");
+        System.out.println("+-------------------------------+    +-------------------------------+");
+
         TimeUnit.SECONDS.sleep(3);
     }
 
@@ -99,8 +122,14 @@ public class Battle {
     *
     */
     {
+        Sound sound = new Sound("\\SoundEffects\\Victory.wav");
+        Clip clip = sound.getClip();
         TypedText.typedFast("You Win");
-        //Go to current location
+        TimeUnit.SECONDS.sleep(5);
+        clip.stop();
+
+        
+        
     }
 
     public static void gameOver() throws InterruptedException 

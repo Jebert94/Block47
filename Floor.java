@@ -16,9 +16,9 @@ public class Floor {
         TypedText.typedFast("You are on the "+ floorLevel + ".");
         TypedText.typedFast("You come across three rooms\n");
         TypedText.typedFast("Where do you want to go?\n\n");
-        System.out.println("1: Enter room 1. " + roomsOnFloor.get(0).getRoomDescription());
-        System.out.println("2: Enter room 2. " + roomsOnFloor.get(1).getRoomDescription());
-        System.out.println("3: Enter room 3. " + roomsOnFloor.get(2).getRoomDescription());
+        System.out.println("1: Enter room 1. ");
+        System.out.println("2: Enter room 2. ");
+        System.out.println("3: Enter room 3. ");
 
 
 

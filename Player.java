@@ -19,9 +19,9 @@ public class Player extends AbstractCharacter{
     private static Player onlyPlayer;
 
     private Player(){
-        inventory.add(new Item("empty", 0, 0));
-        inventory.add(new Item("empty", 1, 0));
-        inventory.add(new Item("empty", 2, 0));
+        inventory.add(new Item("Empty", 0, 0));
+        inventory.add(new Item("Empty", 1, 0));
+        inventory.add(new Item("Empty", 2, 0));
     }
 
     public static Player getInstance() {
@@ -64,20 +64,21 @@ public class Player extends AbstractCharacter{
 
     /**********Acessories ************** */
 
-    public int getWeaponPoints(){
-        Item weapon = onlyPlayer.inventory.get(0);
-        int weaponAttackPoints = weapon.getBuffOrNerf();
-        return weaponAttackPoints;
-    }
 
     public int getArmorPoints(){
-        Item armorItem = onlyPlayer.inventory.get(2);
+        Item armorItem = onlyPlayer.inventory.get(0);
         int armorDefensePoints = armorItem.getBuffOrNerf();
         return armorDefensePoints;
     }
 
+    public int getWeaponPoints(){
+        Item weapon = onlyPlayer.inventory.get(1);
+        int weaponAttackPoints = weapon.getBuffOrNerf();
+        return weaponAttackPoints;
+    }
+
     public int getAgilityAcessoryPoints(){
-        Item agilityItem = onlyPlayer.inventory.get(1);
+        Item agilityItem = onlyPlayer.inventory.get(2);
         int agilityAccessory = agilityItem.getBuffOrNerf();
         return agilityAccessory;
     }
@@ -85,8 +86,17 @@ public class Player extends AbstractCharacter{
 
     /********Combined Stats****************/
 
+
+    public int getHealth(){
+        Item armorItem = onlyPlayer.inventory.get(0);
+        int buffOrNerf = armorItem.getBuffOrNerf();
+        int totalHealth = this.baseHealth + buffOrNerf;
+        return totalHealth;
+        
+    }
+
     public int getAttack(){
-        Item attackItem = onlyPlayer.inventory.get(0);
+        Item attackItem = onlyPlayer.inventory.get(1);
         int buffOrNerf = attackItem.getBuffOrNerf();
         int totalAttack = this.baseAttack +buffOrNerf;
         return totalAttack;
@@ -94,20 +104,14 @@ public class Player extends AbstractCharacter{
     }
 
     public int getAgility(){
-        Item agilityItem = onlyPlayer.inventory.get(1);
+        Item agilityItem = onlyPlayer.inventory.get(2);
         int buffOrNerf = agilityItem.getBuffOrNerf();
         int totalAgility = this.baseAgility + buffOrNerf;
         return totalAgility;
         
     }
 
-    public int getHealth(){
-        Item armorItem = onlyPlayer.inventory.get(2);
-        int buffOrNerf = armorItem.getBuffOrNerf();
-        int totalHealth = this.baseHealth + buffOrNerf;
-        return totalHealth;
-        
-    }
+
 
 
     /************Fighting Stats************** */
@@ -137,12 +141,12 @@ public class Player extends AbstractCharacter{
     }
 
     public void playerChoiceQuesiton() throws InterruptedException {
-        TypedText.typedNormal("what are you going to do??");
-        TypedText.typedFast("Enter one of the following options:");
+        TypedText.typedNormal("what will "+name+" do?");
         System.out.println();
-        TypedText.typedFast("1: Attack");
-        TypedText.typedFast("2: Heal");
-        TypedText.typedFast("3: Run",2);
+        System.out.println("1: Attack");
+        System.out.println("2: Heal");
+        System.out.println("3: Run");
+
 
     }
 
@@ -150,19 +154,25 @@ public class Player extends AbstractCharacter{
         int choice = Main.input.nextInt();
         switch(choice){
         case 1:
+            System.out.println();
+            TypedText.typedFast(name +" used Attack!");
             attack(player, enemy);
             break;
         
         case 2:
+            System.out.println();
+            TypedText.typedFast(name +" used Heal!");
             heal(player, enemy);
             break;
         
         case 3:
+            System.out.println();
+            TypedText.typedFast(name +" used Run!");
             run(player, enemy);
             break;
         
         default:
-            TypedText.typedFast("Try again. Choose either attack, heal, or run.\n");
+            TypedText.typedFast("Try again.\n");
             playerChoiceAnswer(player, enemy);
         break;
         }
@@ -197,9 +207,9 @@ public class Player extends AbstractCharacter{
 
     public void heal(Player player, Enemy enemy) throws InterruptedException{
         if(player.getHealth() > 10){
-            int playerHealth = player.getHealth();
+            int playerHealth = player.getFightingHealth();
             int healedPlayerHealth = playerHealth + 2;
-            player.setHealth(healedPlayerHealth);
+            player.setUpdatedFightingHealth(healedPlayerHealth);
             System.out.println("\n");
             TimeUnit.SECONDS.sleep(1);
             TypedText.typedFast("The enemy waited while you bandaged yourself.");
@@ -211,7 +221,7 @@ public class Player extends AbstractCharacter{
 
     public void run(Player player, Enemy enemy) throws InterruptedException {
         if(player.getAgility()<= enemy.getAgility()){
-            int playerHealth = player.getHealth();
+            int playerHealth = player.getFightingHealth();
             int damagedPlayerHealth = playerHealth - 1;
             player.setHealth(damagedPlayerHealth);
             System.out.println("\n");
@@ -220,7 +230,7 @@ public class Player extends AbstractCharacter{
             TypedText.typedFast("You took 1 damage.");
             TypedText.typedFast("Your current health is "+ damagedPlayerHealth);
         }
-        if(player.getHealth() <= 0){
+        if(player.getFightingHealth() <= 0){
             Battle.gameOver();
         }
         TypedText.typedFast("You got away!");

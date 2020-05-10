@@ -1,6 +1,6 @@
 public class Item {
     private String name;
-    private int category; // 0 = attack item, 1 = agility item, 2 = armor/health item
+    private int category; // 0 = health item, 1 = Attack item, 2 = Agility item
     private int buffOrNerf;
 
     Item(String name, int category, int buffOrNerf){

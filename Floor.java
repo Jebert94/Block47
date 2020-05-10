@@ -26,14 +26,38 @@ public class Floor {
             int answer = Main.input.nextInt();
             switch(answer){
                 case 1:
-                    roomsOnFloor.get(0).enter();
+                    if(!roomsOnFloor.get(0).getAlreadyBeenInRoom()){
+                        roomsOnFloor.get(0).enter();
+                        TypedText.typedFast("Youre back in the hallway.");
+                        checkForUnexploredRooms();
+                    }
+                    else{
+                        AlreadyBeenInRoom();
+                    }
                     break;
+
                 case 2:
-                    roomsOnFloor.get(1).enter();
+                    if(!roomsOnFloor.get(1).getAlreadyBeenInRoom()){
+                        roomsOnFloor.get(1).enter();
+                        TypedText.typedFast("Youre back in the hallway.");
+                        checkForUnexploredRooms();
+                    }
+                    else{
+                        AlreadyBeenInRoom();
+                    }
                     break;
+
                 case 3:
-                    roomsOnFloor.get(2).enter();
+                    if(!roomsOnFloor.get(2).getAlreadyBeenInRoom()){
+                        roomsOnFloor.get(2).enter();
+                        TypedText.typedFast("Youre back in the hallway.");
+                        checkForUnexploredRooms();
+                    }
+                    else{
+                        AlreadyBeenInRoom();
+                    }
                     break;
+
                 default:
                     TypedText.typedFast("You need to pick another room");
                 break;
@@ -42,6 +66,39 @@ public class Floor {
         }
         TypedText.typedFast("Looks like you've been through all the rooms. It's time to go to the next floor");
 
+
+    }
+
+    public void checkForUnexploredRooms() throws InterruptedException {
+        int count = 0;
+        for(Room room : roomsOnFloor){
+            if(!room.getAlreadyBeenInRoom()){
+                count++;
+            }
+        }
+        if(count == 1){
+            TypedText.typedFast("You still have to explore room:");
+            displayUnexploredRooms();
+            TypedText.typedFast("You have no choice but to go in there...");
+        }
+        if(count > 1){
+            TypedText.typedFast("You still have to explore rooms:");
+            displayUnexploredRooms();
+            TypedText.typedFast("What room would you like to go into next?");
+        }
+    }
+
+    public void displayUnexploredRooms() throws InterruptedException {
+        for(Room room : roomsOnFloor){
+            if(!room.getAlreadyBeenInRoom()){
+                System.out.println(String.valueOf(room.getRoomNumber()));
+            }
+        }
+    }
+
+    public void AlreadyBeenInRoom() throws InterruptedException {
+        TypedText.typedFast("You've already been in this room. Theres no reason to go back.");
+        checkForUnexploredRooms();
 
     }
 }

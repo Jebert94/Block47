@@ -40,10 +40,9 @@ public class TypedText {
 
     public static void typedNormalSound(String line) throws InterruptedException {
         Random rand = new Random();
-        Sound sound = new Sound();
         for(int i =0; i<line.length();i++){
             System.out.print(line.charAt(i));
-            sound.typingSound();
+            Sound sound = new Sound();
             int time = rand.nextInt(60-40+1)+40;
             if(line.charAt(i) == ' '){
                 time = 60;

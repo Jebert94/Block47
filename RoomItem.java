@@ -1,8 +1,8 @@
 public class RoomItem extends Room {
     private Item item;
 
-    RoomItem(String roomDescription, String itemName, int itemCategory, int itemBuffOrNerf)  {
-        super(roomDescription);
+    RoomItem(int roomNumber, String roomDescription, String itemName, int itemCategory, int itemBuffOrNerf)  {
+        super(roomNumber, roomDescription);
         Item item = new Item(itemName, itemCategory, itemBuffOrNerf);
         this.item = item;
     }

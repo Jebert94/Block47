@@ -1,11 +1,16 @@
 
 public abstract class Room {
+    private int roomNumber;
     private String roomDescription;
     private boolean alreadyBeenInRoom;
+ 
 
-    public Room(String roomDescription){
-        this.alreadyBeenInRoom = false;
+    public Room(int roomNumber, String roomDescription){
+        this.roomNumber = roomNumber;
         this.roomDescription = roomDescription;
+        this.alreadyBeenInRoom = false;
+
+
     }
 
     public void enter() throws InterruptedException{
@@ -13,6 +18,14 @@ public abstract class Room {
     }
 
     /******Getters and Setters************* */
+
+    public int getRoomNumber(){
+        return roomNumber;
+    }
+
+    public void setRoomNumber(int roomNumber){
+         this.roomNumber = roomNumber;
+    }
 
     public String getRoomDescription(){
         return roomDescription;

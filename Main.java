@@ -11,8 +11,8 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
         Intro intro = new Intro();  
-        //Intro.introduction();
-        //intro.title();
+        Intro.introduction();
+        intro.title();
         Player player = Player.getInstance();
         Intro.background();
         intro.createPlayerName(player);

@@ -9,11 +9,13 @@ public class RoomItem extends Room {
 
     @Override
     public void enter() throws InterruptedException {
-        TypedText.typedFast(getRoomDescription());
+        TypedText.typedNormal(getRoomDescription());
+        System.out.println();
         TypedText.typedFast("Do you want to pick up the " + item.getName() + " ?" );
-        TypedText.typedFast("1: Yes");
-        TypedText.typedFast("2: No");
+        System.out.println("1: Yes");
+        System.out.println("2: No");
         keepOrTossItem();
+        System.out.println();
     }
 
     public void keepOrTossItem() throws InterruptedException {
@@ -22,7 +24,8 @@ public class RoomItem extends Room {
         case 1:
             Player player = Player.getInstance();
             player.addItemToInventory(this.item);
-            TypedText.typedFast("You added the item!");
+
+            TypedText.typedFast("The item was added to your inventory.");
             break;
 
         case 2:

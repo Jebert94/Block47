@@ -4,7 +4,7 @@ public class RoomEmpty extends Room {
         super(roomNumber, roomDescription);
     }
     public void enter() throws InterruptedException{
-        TypedText.typedFast(getRoomDescription());
+        TypedText.typedNormal(getRoomDescription());
         setAlreadyBeenInRoom(true);
     }
 }

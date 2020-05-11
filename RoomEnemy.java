@@ -8,7 +8,7 @@ public class RoomEnemy extends Room {
     }
     @Override
     public void enter() throws InterruptedException {
-        TypedText.typedFast(getRoomDescription());
+        TypedText.typedNormal(getRoomDescription());
         Battle battle = new Battle(Player.getInstance(), this.enemyInRoom);
         battle.fight();
         setAlreadyBeenInRoom(true);

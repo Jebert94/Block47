@@ -208,7 +208,7 @@ public class Player extends AbstractCharacter{
     }
 
     public void heal(Player player, Enemy enemy) throws InterruptedException{
-        if(player.getHealth() > 10){
+        if(player.getHealth() < 10){
             int playerHealth = player.getFightingHealth();
             int healedPlayerHealth = playerHealth + 2;
             player.setUpdatedFightingHealth(healedPlayerHealth);
@@ -216,7 +216,8 @@ public class Player extends AbstractCharacter{
             TimeUnit.SECONDS.sleep(1);
             TypedText.typedFast("The enemy waited while you bandaged yourself.");
             TypedText.typedFast("You gained 2 Health points. Your current Health is "+ healedPlayerHealth+ ".");
-            System.out.println("\n");
+            System.out.println();
+            TimeUnit.SECONDS.sleep(2);
             
         }
     }

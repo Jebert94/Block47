@@ -37,6 +37,7 @@ public class Intro {
         TypedText.typedNormalSound("But that doesn't mean you are alone.");
         TypedText.typedNormalSound("This is Escape From Bloc 47.");
         System.out.println("\n\n");
+        sound.getClip().stop();
     }
     //clear screeen
     //play USSR National Anthom

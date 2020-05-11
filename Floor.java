@@ -24,10 +24,12 @@ public class Floor {
 
         while(!roomsOnFloor.get(0).getAlreadyBeenInRoom() || !roomsOnFloor.get(1).getAlreadyBeenInRoom() || !roomsOnFloor.get(2).getAlreadyBeenInRoom()){
             int answer = Main.input.nextInt();
+            System.out.println();
             switch(answer){
                 case 1:
                     if(!roomsOnFloor.get(0).getAlreadyBeenInRoom()){
                         roomsOnFloor.get(0).enter();
+                        Main.clearScreen();
                         TypedText.typedFast("Youre back in the hallway.");
                         checkForUnexploredRooms();
                     }
@@ -39,6 +41,7 @@ public class Floor {
                 case 2:
                     if(!roomsOnFloor.get(1).getAlreadyBeenInRoom()){
                         roomsOnFloor.get(1).enter();
+                        Main.clearScreen();
                         TypedText.typedFast("Youre back in the hallway.");
                         checkForUnexploredRooms();
                     }
@@ -50,6 +53,7 @@ public class Floor {
                 case 3:
                     if(!roomsOnFloor.get(2).getAlreadyBeenInRoom()){
                         roomsOnFloor.get(2).enter();
+                        Main.clearScreen();
                         TypedText.typedFast("Youre back in the hallway.");
                         checkForUnexploredRooms();
                     }
@@ -79,11 +83,13 @@ public class Floor {
         if(count == 1){
             TypedText.typedFast("You still have to explore room:");
             displayUnexploredRooms();
+            System.out.println();
             TypedText.typedFast("You have no choice but to go in there...");
         }
         if(count > 1){
             TypedText.typedFast("You still have to explore rooms:");
             displayUnexploredRooms();
+            System.out.println();
             TypedText.typedFast("What room would you like to go into next?");
         }
     }
@@ -91,7 +97,7 @@ public class Floor {
     public void displayUnexploredRooms() throws InterruptedException {
         for(Room room : roomsOnFloor){
             if(!room.getAlreadyBeenInRoom()){
-                System.out.println(String.valueOf(room.getRoomNumber()));
+                System.out.println(String.valueOf(room.getRoomNumber())+":"+" Enter room "+String.valueOf(room.getRoomNumber())+".");
             }
         }
     }

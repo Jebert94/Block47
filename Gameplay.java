@@ -25,15 +25,16 @@ public class Gameplay {
 
 
     public static void mainGameplay() throws InterruptedException {
-        Room fl3Rm1 = new RoomEnemy(1,"Enemy Room", "  Elmo the Devourer ", 1, 4, 1);
-        Room fl3Rm2 = new RoomEmpty(2,"Theres nothing in here.");
-        Room fl3Rm3 = new RoomItem(3,"Theres an Item in this room", "Knife", 1, 2);
+        Room fl3Rm1 = new RoomEnemy(1,"You walk in and see a rocking chair moving back and forth in the corner.\nYou see there is just a stuffed animal but its... glowing red eyes are following you.\nIt gets up and walks into the light...\n\n", "  Elmo the Devourer ", 1, 4, 1);
+        Room fl3Rm2 = new RoomEmpty(2,"You look into the room and find it full of boxes.\nYou begin to open them to see whats inside.\nYou find that each box is full of new Intel processors.\nMaybe if you hit your head harder you might think these are actually worth something...\nBut there is nothing of value here #TeamRed");
+        Room fl3Rm3 = new RoomItem(3,"Entering the room, you notice a bunch of knives stuck in the back of the door.\nOne of these could make a good weapon. ", "Knife", 1, 2);
         Floor thirdFloor = new Floor("Third Floor", fl3Rm1, fl3Rm2, fl3Rm3);
         thirdFloor.moveBetweenRooms();
 
-        Room fl2Rm1 = new RoomEnemy(1,"Enemy Room", "Coked-up Hello Kitty", 3, 4, 4);
-        Room fl2Rm2 = new RoomEmpty(2,"Theres nothing in here.");
-        Room fl2Rm3 = new RoomItem(3,"Theres an Item in this room", "Cigar", 0, 4);
+        
+        Room fl2Rm1 = new RoomEmpty(1,"Theres nothing in here.");
+        Room fl2Rm2 = new RoomItem(2,"Theres an Item in this room", "Cigar", 0, 4);
+        Room fl2Rm3 = new RoomEnemy(3,"Enemy Room", "Coked-up Hello Kitty", 3, 4, 4);
         Floor secondFloor = new Floor("Second Floor", fl2Rm1, fl2Rm2, fl2Rm3);
         secondFloor.moveBetweenRooms();
         

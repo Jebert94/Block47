@@ -66,7 +66,7 @@ public class TypedText {
                 time = 80;
             }
             if(line.charAt(i) == '.'){
-                time = 200;
+                time = 300;
             }
             try {
                 Thread.sleep(time);

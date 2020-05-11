@@ -141,7 +141,7 @@ public class Player extends AbstractCharacter{
     }
 
     public void playerChoiceQuesiton() throws InterruptedException {
-        TypedText.typedNormal("what will "+name+" do?");
+        TypedText.typedNormal("What will "+name+" do?");
         System.out.println();
         System.out.println("1: Attack");
         System.out.println("2: Heal");
@@ -184,8 +184,10 @@ public class Player extends AbstractCharacter{
         ArrayList<String> kindOfAttacks = new ArrayList<String>();
         kindOfAttacks.add("You poked him in his only good eye.");
         kindOfAttacks.add("You attacked with a perfect flying armbar.");
-        kindOfAttacks.add("You told him he didn't look fat in those pants...\n"+"He didn't belive you.");
+        kindOfAttacks.add("You told him he didn't look fat in those pants...\n"+"He didn't believe you.");
         kindOfAttacks.add("You pulled the pin and tucked a grenade in his back pocket when he wasnt looking.");
+        kindOfAttacks.add("You called his mother to let him know of his actions");
+        kindOfAttacks.add("You slashed his $650 Gucci pants");
         int attackPoints = player.getAttack();
         int oppHealthPoints = enemy.getHealth();
         int updatedHealth = oppHealthPoints - attackPoints;
@@ -241,6 +243,7 @@ public class Player extends AbstractCharacter{
     public void addItemToInventory(Item item){
 
         int arrayLocation = item.getCategory();
+        onlyPlayer.inventory.remove(arrayLocation);
         onlyPlayer.inventory.add(arrayLocation, item);
         
     }

@@ -1,4 +1,3 @@
-
 import java.util.concurrent.TimeUnit;
 
 /* 
@@ -87,7 +86,7 @@ public class Intro {
         TypedText.typedFast("* The monster continues to bang on the door. *",3);
         System.out.println("\n");
 
-        TypedText.typedFast("* Out of breath you whisper “what the fuck was that thing?” as you stare at the shaking door. *",2);
+        TypedText.typedFast("* Out of breath you whisper â€œwhat the fuck was that thing?â€� as you stare at the shaking door. *",2);
         TypedText.typedFast("* On the counter next to it you notice a bottle of vodka, grab it and start downing it. *",3); 
         TypedText.typedFast("* Walking around the room and notice you're barefoot. *",2);
         TypedText.typedFast("* You're also bleeding, that thing must have got you somehow. *",2);

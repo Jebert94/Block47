@@ -22,7 +22,7 @@ public class RoomItem extends Room {
         case 1:
             Player player = Player.getInstance();
             player.addItemToInventory(this.item);
-            TypedText.typedFast("you added the item!");
+            TypedText.typedFast("You added the item!");
             break;
 
         case 2:

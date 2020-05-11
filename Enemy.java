@@ -21,6 +21,8 @@ public void turn(Player player, Enemy enemy) throws InterruptedException{
     kindOfAttacks.add("The enemy started talking to you and didnt brush his teeth");
     kindOfAttacks.add("The enemy cut off your arm with a chainsaw");
     kindOfAttacks.add("The enemy shoved you... like... really hard.");
+    kindOfAttacks.add("The enemy mocked your pencil thin mustache that you've been growing for 2 months");
+    kindOfAttacks.add("The enemy dropped kick your nuts");
     Random random = new Random();
     int attackLine = random.nextInt(kindOfAttacks.size());
 

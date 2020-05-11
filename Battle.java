@@ -85,33 +85,35 @@ public class Battle {
     */
     {
         Main.clearScreen();
+        String enemyName = enemy.getName();
         int enemyAttack = enemy.getAttack();
         int enemyAgility = enemy.getAgility();
         int enemyHealth = enemy.getHealth();
 
+        String playerName = player.getName();
         int playerAttack = player.getAttack();
         int playerAgility = player.getAgility();
         int playerHealth = player.getFightingHealth();
 
 
-        System.out.println("+-------------------------------+    +-------------------------------+");
-        System.out.println("|             ENEMY             |    |             PLAYER            |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("| Current Health: "+enemyHealth+"             |    | Current Health: "+playerHealth+"             |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("| Attack: "+enemyAttack+"                     |    | Attack: "+playerAttack+"                     |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("| Agility: "+enemyAgility+"                    |    | Agility: "+playerAgility+"                    |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("|                               |    | Inventory:                    |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("|                               |    |    Armor["+player.inventory.get(0).getName()+"] +"+player.getArmorPoints()+" Health     |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("|                               |    |    Weapon["+player.inventory.get(1).getName()+"] +"+player.getWeaponPoints()+" Attack    |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("|                               |    |    Boost["+player.inventory.get(2).getName()+"] +"+player.getAgilityAcessoryPoints()+" Agility    |");
-        System.out.println("|                               |    |                               |");
-        System.out.println("+-------------------------------+    +-------------------------------+");
+        System.out.println("+-------------------------------+                   +-------------------------------+");
+        System.out.println("|     "+enemyName+"      |                   |             "+playerName+"              |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("| Current Health: "+enemyHealth+"             |                   | Current Health: "+playerHealth+"             |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("| Attack: "+enemyAttack+"                     |                   | Attack: "+playerAttack+"                     |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("| Agility: "+enemyAgility+"                    |                   | Agility: "+playerAgility+"                    |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("|                               |                   | Inventory:                    |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("|                               |                   |    Armor["+player.inventory.get(0).getName()+"] +"+player.getArmorPoints()+" Health     |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("|                               |                   |    Weapon["+player.inventory.get(1).getName()+"] +"+player.getWeaponPoints()+" Attack    |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("|                               |                   |    Boost["+player.inventory.get(2).getName()+"] +"+player.getAgilityAcessoryPoints()+" Agility    |");
+        System.out.println("|                               |                   |                               |");
+        System.out.println("+-------------------------------+                   +-------------------------------+");
 
         TimeUnit.SECONDS.sleep(3);
     }
